@@ -1,4 +1,5 @@
 ﻿using BlockRadiatonCommands.Utils;
+using Rocket.API;
 using Rocket.API.Collections;
 using Rocket.Core;
 using Rocket.Core.Plugins;
@@ -31,33 +32,39 @@ namespace BlockRadiatonCommands
 
         private void Commands_OnExecuteCommand(Rocket.API.IRocketPlayer caller, Rocket.API.IRocketCommand command, ref bool cancel)
         {
-            UnturnedPlayer player = (UnturnedPlayer)caller;
 
-            if(player != null)
+            if(caller is UnturnedPlayer)
             {
-                if (player.Player.movement.isRadiated)
+                UnturnedPlayer player = (UnturnedPlayer)caller;
+
+                if (player != null)
                 {
-
-                    if (SearchCommands(command.Name.ToLower()))
-                    {
-                        cancel = false;
-                    }
-                    else
+                    if (player.Player.movement.isRadiated)
                     {
 
-                        if (!player.IsAdmin)
+                        if (SearchCommands(command.Name.ToLower()))
                         {
-                            ChatManagerUtils.SendMessage(player, Translate("InRadiatonZone"));
-                            cancel = true;
+                            cancel = false;
+                        }
+                        else
+                        {
+
+                            if (!player.IsAdmin)
+                            {
+                                ChatManagerUtils.SendMessage(player, Translate("InRadiatonZone"));
+                                cancel = true;
+                            }
+
                         }
 
+
+                        return;
                     }
 
-
-                    return;
                 }
-         
             }
+
+      
         }
 
         public override TranslationList DefaultTranslations => new TranslationList(){
