@@ -16,8 +16,8 @@ namespace BlockRadiatonCommands
             Image = "URL IMAGE HERE";
             CommandsAllowed = new List<string>()
             {
-                "menu",
-
+                "heal",
+                "tell",
             };
         }
     }

@@ -69,7 +69,7 @@ namespace BlockRadiatonCommands
 
         public override TranslationList DefaultTranslations => new TranslationList(){
 
-            { "InRadiatonZone", "Estas en la zona de radiacion, Para usar comandos tienes que salir de aca" },
+            { "InRadiatonZone", "You are in the radiation zone, To use commands you have to get out of here" },
 
         };
 
