@@ -13,7 +13,7 @@ namespace BlockRadiatonCommands
         public List<string> CommandsAllowed { get; set; }
         public void LoadDefaults()
         {
-            Image = "URL IMAGE HERE";
+            Image = "https://imgur.com/a/9LKkCmY.png";
             CommandsAllowed = new List<string>()
             {
                 "heal",
